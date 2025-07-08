@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Page Title -->
+    <title>Wells, Crops, and Crisis</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="/css/style.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Main Wrapper -->
+    <div class="site-wrapper">
+        <!-- HEADER SECTION -->
+        <header class="site-header">
+            <div class="header-inner">
+                <!-- Left Header Content -->
+                <div class="header-left">
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">Jason Runnells.</a>
+                    <span class="latlong">33.9941° N, 118.4527° W</span>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="hamburger" id="hamburger">&#9776;</button>
+                
+                <!-- Navigation Menu -->
+                <nav class="site-nav" id="site-nav">
+                    <a href="/index.html">Home <span class="icon">✦</span></a>
+                    <a href="/portfolio/index.html">Portfolio <span class="icon">✦</span></a>
+                    <div class="section-separator-menu"></div>
+                    <a href="#overview">Overview</a>
+                    <a href="#tulare">Tulare County</a>
+                    <a href="#wse">Water Surface Elevation</a>
+                    <a href="#hotspot">Hot Spot Analysis</a>
+                    <a href="#multivariate">Multivariate Clustering</a>
+                    <a href="#time">WSE Change Over Time</a>
+                    <a href="#severe">The "Severe 13"</a>
+                    <a href="#landcover">Landcover/Crop Analysis</a>
+                    <a href="#conclusion">Conclusion</a>
+                    <a href="#credits">Credits</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- TITLE SECTION -->
+        <h1 class="reveal">Wells, Crops, and Crisis</h1>
+        <h3 class="subtitle reveal2">Exploring the spatial relationships between groundwater depletion, crops, and landcover in Tulare County, CA.</h3>
+        <p class="reveal2">Jason Runnells <span style="font-weight: 800;">|</span> May, 2025</p>
+        <div class="section-separator-full"></div>
+
+        <!-- OVERVIEW SECTION -->
+        <h2 id="overview" class="reveal">Overview</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75 reveal2">
+            This project analyzes groundwater level changes in Tulare County, California from 2004 to 2024 using well data, spatial statistics, and landcover data. It identifies both spatial and behavioral clusters of groundwater decline and examines the types of landcover found near wells that experienced the most severe declines during the study period to explore potential relationships between landcover/agriculture and groundwater stress. While not intended to establish causation, the analysis is intended to highlight spatial patterns that may support future research and inform more sustainable water and land management strategies.
+        </p>
+
+        <!-- QUESTIONS SECTION -->
+        <h3 class="reveal">Questions</h3>
+        <ul class="styled-list reveal2 width-50" style="margin-bottom: 4rem;">
+            <li>Which wells in Tulare County, CA experienced the greatest groundwater declines?</li>
+            <li>Are severe groundwater declines spatially clustered across the county?</li>
+            <li>How has groundwater loss changed over time?</li>
+            <li>Which landcover types are most associated with the areas of severe groundwater decline?</li>
+        </ul>
+        <div class="section-separator-full"></div>
+
+        <!-- TULARE COUNTY SECTION -->
+        <h2 id="tulare" class="reveal">Tulare County</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75 reveal2">
+            Tulare County sits in California's Central Valley—one of the most productive agricultural regions in the entire country and one of the most groundwater-dependent. With limited surface water availability and a large portion of land dedicated to farming, groundwater plays a critical role in supporting both agriculture and the county's rural communities. Because of these factors, Tulare County is a prime location for examining the long-term impacts of groundwater use and management in the state.
+        </p>
+        
+        <!-- Field Image -->
+        <div class="lightbox-container">
+            <img style="max-height: 500px;" src="/images/wells_crops_crisis/field.png" alt="Agricultural fields in Tulare County" data-caption="" class="lightbox-trigger" />
+            <div class="hover-overlay">Click to expand</div>
+        </div>
+
+        <!-- WELLS SECTION -->
+        <div class="story-card-overlap">
+            <div class="story-card-overlap-text">
+                <h3 class="reveal">Wells</h3>
+                <p class="reveal2">
+                    During dry years, approximately 95% of Tulare County's water supply comes from wells (Department of Water Resources). As surfacewater sources have become less reliable due to drought and reduced allocations, dependence on groundwater has grown. In response, many wells have been drilled deeper to access more water—providing short-term relief but placing additional strain on already depleted aquifers.
+                </p>
+            </div>
+            <div class="story-card-overlap-media">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/field2.png" alt="Agricultural irrigation in Tulare County" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CROPS SECTION -->
+        <div class="story-card-overlap reverse">
+            <div class="story-card-overlap-text">
+                <h3 class="reveal">Crops</h3>
+                <p class="reveal2">
+                    Tulare County is one of California's top farming regions, producing a wide range of crops such as almonds, grapes, citrus, and alfalfa. Many of these require steady, year-round irrigation. The large scale agriculture found across the area puts consistent pressure on local water resources.
+                </p>
+            </div>
+            <div class="story-card-overlap-media">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/oranges.png" alt="Citrus crops in Tulare County" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRISIS SECTION -->
+        <div class="story-card-overlap">
+            <div class="story-card-overlap-text">
+                <h3 class="reveal">Crisis</h3>
+                <p class="reveal2">
+                    As surface water declined, groundwater pumping surged—leading to dry wells, land subsidence, and long-term water access issues. In response, the 2014 Sustainable Groundwater Management Act (SGMA) mandated local agencies restore balance. Tulare County now sits at the heart of this transition, where agriculture must reckon with the limits of a once-reliable resource.
+                </p>
+            </div>
+            <div class="story-card-overlap-media">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/farmer.png" alt="Farmer in Tulare County" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-separator-full"></div>
+
+        <!-- WATER SURFACE ELEVATION SECTION -->
+        <h2 id="wse" class="reveal">Water Surface Elevation (WSE)</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75 reveal2">
+            Water Surface Elevation (WSE) measures the depth from the ground surface to the water level in a well and is a key indicator of groundwater availability. To track long-term changes, WSE data from 110 wells were analyzed over a 20-year period, from 2004 to 2024. In an effort to standardize the WSE measurements and to minimize seasonal variation, only measurements taken during the month of October were used for each year to represent late-season, low-recharge groundwater conditions.
+        </p>
+        <br>
+        <h3 class="reveal">Change & Slope</h3>
+        <p class="width-50 reveal2">
+            To quantify long-term groundwater trends, this analysis uses two key metrics derived from annual well measurements:
+        </p>
+        <ul class="styled-list width-50 reveal2" style="margin-bottom: 4rem;">
+            <li><span style="font-weight: 800; font-size: 1.2rem;">Change:</span> The total change in WSE between 2004 and 2024</li>
+            <li><span style="font-weight: 800; font-size: 1.2rem;">Slope:</span> The average annual rate of change over the 20-year period, calculated using a best-fit linear regression line for each individual well</li>
+        </ul>
+
+        <div class="section-separator-full"></div>
+
+        <!-- HOT SPOT ANALYSIS SECTION -->
+        <h2 id="hotspot" class="reveal">Hot Spot Analysis</h2>
+        <div class="section-separator reveal"></div>
+
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <p class="reveal2">
+                        Hot Spot Analysis (Getis-Ord Gi*) was used to identify statistically significant clusters of groundwater decline across Tulare County. By analyzing the overall change in WSE from 2004-2024, areas with unusually high or low changes were detected based on spatial relationships between wells.
+                    </p>
+                    <p class="reveal2">
+                        The results highlight hot spots—clusters of wells with significantly greater decline than expected—and cold spots, where decline was minimal or where conditions were relatively stable in relation to neighboring wells. This method helps visualize where groundwater loss is most concentrated and provides insight into spatial patterns that may reflect land use, pumping intensity, or other contributing factors.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_hotspot_bar.png" alt="Hot spot analysis results chart" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hot Spot Map -->
+        <iframe src="/portfolio/maps/tulare/index.html" 
+            width="100%"
+            height="600px"
+            style="border: none; margin-bottom: 4rem; border-radius: 10px;"
+            title="Hot Spot Analysis of Groundwater Decline in Tulare County">
+        </iframe>
+
+        <h3 class="reveal">Hot Spots with 99% Confidence</h3>
+        <p class="width-50 reveal2">
+            Out of the 110 wells analyzed, 30 were identified as statistically significant hot spots with 99% confidence and were located in the southwestern part of the county. These wells represent only one piece of the overall picture, but they're important because they pinpoint where the most severe groundwater declines were geographically concentrated.
+        </p>
+
+        <!-- Hot Spots 99% Map -->
+        <iframe src="/portfolio/maps/tulare/hotspots99.html" 
+            width="100%"
+            height="600px"
+            style="border: none; margin-bottom: 4rem; border-radius: 10px;"
+            title="Hot Spots with 99% Confidence">
+        </iframe>
+
+        <div class="section-separator-full"></div>
+
+        <!-- MULTIVARIATE CLUSTERING SECTION -->
+        <h2 id="multivariate" class="reveal">Multivariate Clustering</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75 reveal2">
+            While hot spot analysis reveals where groundwater decline is concentrated, it does not capture how individual wells are changing over time. To address that, a multivariate clustering analysis was performed using WSE change and slope. This approach allowed for grouping of the 110 wells into three distinct categories based on their long-term WSE trends: Severe Decline, Moderate Decline, and Stable. Unlike the spatial findings from the hot spot analysis, multivariate clustering highlights individual well behavior regardless of location, offering a clearer picture of which wells are experiencing the most persistent and extreme groundwater loss over time.
+        </p>
+        <br>
+        
+        <!-- Relationship Chart -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">Relationship</h3>
+                    <p class="reveal2">
+                        This chart represents the relationship between WSE change and slope for each well, with each point colored by its multivariate cluster category.
+                    </p>
+                    <p class="reveal2">
+                        The trendline indicates a strong positive correlation (R² ≈ 0.79), suggesting that wells with greater overall declines also tended to have steeper annual rates of decline. This high R² value reinforces the importance of using both metrics in tandem for the clustering analysis, as it reflects a consistent relationship between the overall magnitude and the pace of groundwater loss.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_relationships.png" alt="Relationship between WSE change and slope" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mean Change & Slope Chart -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">Mean Change & Slope</h3>
+                    <p class="reveal2">
+                        This chart summarizes the average total change and average annual rate of change in WSE for each multivariate cluster over the 20-year study period. All values are negative—no cluster showed any net increase in groundwater levels during this time.
+                    </p>
+                    <ul class="styled-list reveal2">
+                        <li>
+                            <h3 style="font-size: 1.3rem; letter-spacing: normal;">Severe Decline</h3>
+                            <ul class="sub-list">
+                                <li>Average total WSE decline of <span style="font-weight: bold;">-129.56 ft</span>, mean annual slope of <span style="font-weight: bold;">-7.84 ft/year</span>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3 style="font-size: 1.3rem; letter-spacing: normal;">Moderate Decline</h3>
+                            <ul class="sub-list">
+                                <li>Average total WSE decline of <span style="font-weight: bold;">-67.95 ft</span>, mean annual slope of <span style="font-weight: bold;">-4.35 ft/year</span>.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3 style="font-size: 1.3rem; letter-spacing: normal;">Stable</h3>
+                            <ul class="sub-list">
+                                <li>Average total WSE decline of <span style="font-weight: bold;">-1.16 ft</span>, mean annual slope of <span style="font-weight: bold;">-0.1 ft/year</span>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_multi_mean_slope3.webp" alt="Mean change and slope by cluster" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yearly Mean WSE Decline Chart -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">Yearly Mean WSE Decline</h3>
+                    <p class="reveal2">
+                        This chart displays the year-to-year mean WSE decline within each multivariate cluster group from 2004 to 2024. Values represent the average change in WSE from the previous year across all wells in that group. Darker shades correspond to greater average declines.
+                    </p>
+                    <p class="reveal2">
+                        Wells in the Severe Decline cluster experienced the largest and most consistent annual WSE decline throughout the study period. The Moderate Decline cluster showed patterns similar to the other categories in the early years of the study, but near 2012, annual average decline became more severe—with some year-to-year variability. The Stable cluster saw comparatively minor declines, with occasional signs of stress in certain years.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_yr_mean_wse.webp" alt="Yearly mean WSE decline by cluster" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spatial Distribution Map -->
+        <h3 class="reveal">Spatial Distribution</h3>
+        <p class="width-50 reveal2">
+            This map shows the spatial distribution of all 110 wells and their respective cluster category. Basic patterns are beginning to emerge—clusters of severely declining wells in the south, more stable wells to the north, and mixed conditions in between. This general overview helps us determine the spatial characteristics of groundwater behavior and allows us to dig deeper into further analysis.
+        </p>
+        <br>
+
+        <iframe src="/portfolio/maps/tulare/multivariate.html" 
+            width="100%"
+            height="600px"
+            style="border: none; margin-bottom: 4rem; border-radius: 10px;"
+            title="Spatial Distribution of Well Clusters">
+        </iframe>
+
+        <div class="section-separator-full"></div>
+
+        <!-- WSE CHANGE OVER TIME SECTION -->
+        <h2 id="time" class="reveal">WSE Change Over Time</h2>
+        <div class="section-separator reveal"></div>
+
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <p class="reveal2">
+                        This 3D space-time cube animation visualizes year-to-year changes in WSE from 2004 to 2024. Each vertical segment represents a single year of measurement for a specific well.
+                    </p>
+                    <p class="reveal2">
+                        Segment colors indicate whether the well experienced a decline (red), no change (white), or a gain (green) in WSE compared to the previous year. This helps highlight how groundwater loss has changed over time.
+                    </p>
+                    <p class="reveal2">
+                        Cluster identification at the base of each well provides additional context, indicating whether that location was identified as part of a pattern of severe, moderate, or stable WSE conditions across the study period. Please recall that these clusters were identified using both WSE values and slope trends. The individual space-time cube segment animation only reflects year-to-year WSE change.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right center-vert">
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/Eo2IgUh5COI" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                        title="3D Space-Time Cube Animation of WSE Changes">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-separator-full"></div>
+
+        <!-- THE "SEVERE 13" SECTION -->
+        <h2 id="severe" class="reveal">The "Severe 13"</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75">
+            We will now shift focus to the 13 wells that were identified in the Severe Decline cluster after performing multivariate clustering analysis.
+        </p>
+        <br>
+        <h3 class="reveal">Alias</h3>
+        <p class="width-50 reveal2">
+            Each of the 13 severely declining wells has been assigned a letter (A-M), with (A) representing the well with the greatest total WSE decline from 2004 to 2024, and (M) representing the least severe of the group. These letter aliases are used for simplified reference in subsequent analysis and visualizations.
+        </p>
+        <br>
+        <h3 class="reveal">Buffer</h3>
+        <p class="width-50 reveal2">
+            A 500-meter buffer has also been applied around each well to define the area for future examination of nearby landcover types and patterns that uniquely surround specific wells.
+        </p>
+        <br>
+        
+        <!-- Severe 13 Map -->
+        <iframe src="/portfolio/maps/tulare/multivariate13.html" 
+            width="100%"
+            height="600px"
+            style="border: none; margin-bottom: 4rem; border-radius: 10px;"
+            title="The 'Severe 13' Wells with 500m Buffers">
+        </iframe>
+
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">WSE Change & Slope</h3>
+                    <p class="reveal2">
+                        Previously we examined the mean WSE change and slope of each multivariate cluster (Severe, Moderate, Stable) to compare the variance between cluster types.
+                    </p>
+                    <p class="reveal2">
+                        This chart represents the mean WSE change and slope of only the 13 wells in the Severe Decline cluster.
+                    </p>
+                    <p class="reveal2">
+                        Recall that well (A) represents the most severe of the severely declining wells. Well (A) experienced a <span style="font-weight: bold;">-192.60 ft</span> decline in WSE between 2004-2024. Well (M) represents the least severe of the 13 most severely declining wells. Well (M) experienced a <span style="font-weight: bold;">-99 ft</span> decline in WSE between 2004-2024.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_severe_wse.webp" alt="WSE change and slope for Severe 13 wells" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-separator-full"></div>
+
+        <!-- LANDCOVER/CROP ANALYSIS SECTION -->
+        <h2 id="landcover" class="reveal">Landcover/Crops Analysis</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75 reveal2">
+            Now that the geographic locations containing the greatest groundwater declines in Tulare County have been identified—along with the 13 most severely impacted wells in the study group—we can begin examining land use patterns around those specific wells. The next step is to analyze landcover data within the 500-meter buffers applied in the previous step to explore whether certain landcover types are more commonly associated with severely declining wells, and to identify any patterns that may suggest a relationship between landcover and groundwater decline.
+        </p>
+        <br>
+        
+        <!-- Two Column Layout for CDL Info -->
+        <div class="two-col">
+            <div>
+                <h3 class="reveal">Cropland Data Layer</h3>
+                <p class="reveal2">
+                    The USDA's Cropland Data Layer (CDL) is a nationwide raster dataset that classifies landcover based on satellite imagery and agricultural surveys. Each pixel represents a specific crop or landcover type, allowing for highly detailed analysis. While the overall study period spans from 2004 to 2024, CDL data for Tulare County is only available beginning in 2007. As a result, all landcover-related analysis in this project reflects the period from 2007 to 2024, the earliest range for which consistent landcover data is available.
+                </p>
+            </div>
+            <div>
+                <h3 class="reveal">CDLs Over Time</h3>
+                <p class="reveal2">
+                    The animation below shows changes in CDL data from 2007 to 2024. The eastern portion of Tulare County is made up of the Sierra Nevada mountain range, including national forest areas and Sequoia National Park, where no agriculture is present. In contrast, the western third contains the entirety of the county's farmland, with significant year-to-year shifts in landcover patterns. This portion of the county will continue to be the focus of our analysis moving forward.
+                </p>
+            </div>
+        </div>
+        <br>
+
+        <!-- CDL Animation -->
+        <iframe src="/portfolio/maps/tulare/cdl.html" 
+            width="100%"
+            height="600px"
+            style="border: none; margin-bottom: 4rem; border-radius: 10px;"
+            title="Cropland Data Layer Animation Over Time">
+        </iframe>
+
+        <!-- LANDCOVER FREQUENCY SECTION -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">Landcover Frequency of Severe Decline Wells</h3>
+                    <p class="reveal2">
+                        For each of the 13 selected wells, the top five landcover types containing the greatest total area within each well's buffer from 2007 to 2024 were identified. This chart shows how often each landcover type appeared in the top five across all wells.
+                    </p>
+                    <p class="reveal2">
+                        By analyzing the frequency of landcover types whose area dominated the 13 most severely declining wells in Tulare County, we can begin to better understand which landcover types are most commonly associated with these wells and identify patterns that may help explain the connection between land use and groundwater decline.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_freq.webp" alt="Landcover frequency chart for Severe 13 wells" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROPORTIONAL COMPOSITION SECTION -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">Proportional Composition of Severe Wells</h3>
+                    <p class="reveal2">
+                        In the previous chart we examined the combined frequency of landcover types across all wells. In this chart we look at the proportional composition of the top 5 landcover types for each individual well.
+                    </p>
+                    <p class="reveal2">
+                        By analyzing the data in this way, we can then determine what percentage of the most frequently occurring landcover types account for the overall composition of landcover across the entire 13 well sample. Landcover types that appeared in at least half of all wells are listed below in order from the most frequently occurring:
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_prop.webp" alt="Proportional composition chart for Severe 13 wells" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LANDCOVER COMPOSITION BREAKDOWN -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal" style="font-size: 1.5rem; letter-spacing: normal;">1. Fallow/Idle Cropland: <span style="font-weight: normal;">21.30%</span></h3>
+                    <br>
+                    <h3 class="reveal" style="font-size: 1.5rem; letter-spacing: normal;">2. Grass/Pasture: <span style="font-weight: normal;">6.48%</span></h3>
+                    <br>
+                    <h3 class="reveal" style="font-size: 1.5rem; letter-spacing: normal;">3. Almonds: <span style="font-weight: normal;">8.62%</span></h3>
+                    <br>
+                    <h3 class="reveal" style="font-size: 1.5rem; letter-spacing: normal;">4. Winter Wheat: <span style="font-weight: normal;">9.78%</span></h3>
+                </div>
+            </div>
+            <div class="split-right">
+                <p class="reveal2">
+                    These findings are important, as they reveal that just because a landcover type appeared more frequently across the 13 wells, it doesn't directly correlate to that landcover type making up a larger share of total land area. For instance, Grass/Pasture appeared more frequently than both Almonds and Winter Wheat, yet it accounted for a smaller overall percentage. Despite appearing in fewer wells, Almonds and Winter Wheat made up a larger proportion of the total landcover near the well samples.
+                </p>
+            </div>
+        </div>
+
+        <!-- LANDCOVER PERCENTAGE ACROSS CLUSTERS -->
+        <h3 class="reveal">Landcover | Percentage of Area Across All Well Clusters</h3>
+        <div class="section-separator reveal"></div>
+        <p class="width-75">
+            This chart presents the average percentage of area occupied by each landcover type across all wells in each cluster group. These percentages are normalized based on the total number of wells per category to allow for consistent comparison. By shifting focus from individual wells to individual sample group summaries, we are able to make comparisons of landcover patterns relative to the severity of groundwater decline. Each percentage reflects the total area that a given landcover type occupied, averaged across all wells in its group—regardless of whether it appeared in every single well or not. 
+        </p>
+
+        <!-- PATTERNS ACROSS CLUSTERS SECTION -->
+        <div class="split-section split-50-50">
+            <div class="split-left center-vert">
+                <div class="left-vert-line">
+                    <h3 class="reveal">Patterns Across Clusters</h3>
+                    <p class="reveal2">
+                        The variance in landcover composition between clusters suggest that both the type and intensity of land use may either influence—or reflect—groundwater conditions.
+                    </p>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="lightbox-container">
+                    <img src="/images/wells_crops_crisis/chart_percent.webp" alt="Landcover percentage across clusters chart" data-caption="" class="lightbox-trigger" />
+                    <div class="hover-overlay">Click to expand</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-separator-full"></div>
+
+        <!-- CONCLUSION SECTION -->
+        <h2 id="conclusion" class="reveal">Conclusion</h2>
+        <div class="section-separator reveal"></div>
+        <p class="width-75 reveal2">
+            This project set out to understand the scope, distribution, and potential drivers of groundwater decline in Tulare County from 2004 to 2024. Through spatial and temporal analysis of 110 wells, we identified that the most severe groundwater declines were not only geographically concentrated in the southwestern region but also behaviorally distinct—characterized by steep, long-term declines in water surface elevation. By combining Hot Spot Analysis, Multivariate Clustering, and investigating landcover characteristics, we now have a multi-dimensional view of how and where groundwater loss is occurring.
+        </p>
+        <p class="width-75 reveal2">
+            While causation cannot be and was not intended to be definitively established, the findings suggest meaningful associations between certain landcover patterns and severe groundwater decline. <span style="font-weight: bold;">Fallow/Idle Cropland</span> was most prominent around wells with the greatest decline, potentially signaling responses to water scarcity. In addition, higher proportions of crops like <span style="font-weight: bold;">Alfalfa</span> were found in more stable areas, while water-intensive crops such as <span style="font-weight: bold;">Winter</span> Wheat were more dominant in declining regions. 
+        </p>
+        <p class="width-75 reveal2">
+            These patterns highlight the importance of long-term groundwater tracking and how land use and water availability are connected—especially as the region currently works to meet the goals of California's SGMA. In Tulare County, where many areas continue to remain critically overdrafted (as of 2024), this type of localized analysis is important and can be used to help guide future groundwater decision making.
+        </p>
+        <div class="section-separator-full" style="margin-top: 4rem;"></div>
+
+        <!-- CREDITS SECTION -->
+        <h3 id="credits" class="reveal">Credits</h3>
+        <div class="section-separator reveal"></div>
+        <br>
+        <h3 class="reveal" style=" margin-bottom: -.5rem; text-decoration: underline; font-size: 1.5rem; letter-spacing: normal;">Data</h3>
+        <p style="margin-bottom: -.3rem;"><span style="font-weight: bold;">Well Locations & Measurements:</span> California Department of Water Resources, 2024</p>
+        <p style="margin-bottom: -.3rem;"><span style="font-weight: bold;">California County Boundaries:</span> California Natural Resources Agency, 2024</p>
+        <p><span style="font-weight: bold;">Raster Imagary:</span> USDA NASS, 2024</p>
+        <br>
+        <h3 class="reveal" style=" margin-bottom: -.5rem; text-decoration: underline; font-size: 1.5rem; letter-spacing: normal;">Charts</h3>
+        <p>Jason Runnells</p>
+        <br>
+        <h3 class="reveal" style=" margin-bottom: -.5rem; text-decoration: underline; font-size: 1.5rem; letter-spacing: normal;">Photography</h3>
+        <p style="margin-bottom: -.3rem;">CA.gov</p>
+        <p style="margin-bottom: -.3rem;">calmatters.org</p>
+        <p style="margin-bottom: -.3rem;">citriusindustry.net</p>
+        <p>mavensnotebook.com</p>
+    </div> <!-- /site-wrapper -->
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <img id="lightbox-img" src="" alt="" />
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // ======================
+        // MOBILE MENU FUNCTIONALITY
+        // ======================
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('site-nav');
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            hamburger.textContent = nav.classList.contains('open') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.site-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                hamburger.textContent = '☰';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('open');
+                hamburger.textContent = '☰';
+            }
+        });
+
+        // ======================
+        // SCROLL REVEAL ANIMATIONS
+        // ======================
+        function observeReveal(selector) {
+            const elements = document.querySelectorAll(selector);
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            elements.forEach(el => observer.observe(el));
+        }
+
+        // Initialize reveal animations
+        observeReveal('.reveal');
+        observeReveal('.reveal2');
+
+        // ======================
+        // LIGHTBOX FUNCTIONALITY
+        // ======================
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        // Set up lightbox triggers
+        document.querySelectorAll('.lightbox-trigger').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = img.dataset.caption || '';
+                lightbox.classList.add('show');
+            });
+        });
+
+        // Close lightbox
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === closeBtn) {
+                lightbox.classList.remove('show');
+                lightboxImg.src = '';
+                lightboxCaption.textContent = '';
+            }
+        });
+
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                lightbox.classList.remove('show');
+                lightboxImg.src = '';
+                lightboxCaption.textContent = '';
+            }
+        });
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-text">© 2025 Jason Runnells</p>
+        </div>
+    </footer>
+</body>
+</html>
