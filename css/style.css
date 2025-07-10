@@ -31,6 +31,23 @@ body {
   color: var(--color-primary);
 }
 
+/* Apply only to iframes with class="map-iframe" */
+.map-iframe {
+  width: 100%;
+  height: 600px; /* Default desktop height */
+  border: none;
+  margin-bottom: 4rem;
+  border-radius: 10px;
+}
+
+/* Mobile override (1:1 square) */
+@media (max-width: 900px) {
+  .map-iframe {
+    height: 100vw !important; /* Square ratio */
+    max-height: 50vh; /* Prevent excessive height */
+  }
+}
+
 /* ======================================
    TYPOGRAPHY
 ====================================== */
