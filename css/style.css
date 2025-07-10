@@ -119,8 +119,9 @@ a:hover {
 }
 
 /* ======================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION - HAMBURGER ONLY
 ====================================== */
+
 .site-header {
   position: fixed;
   top: 0;
@@ -128,69 +129,162 @@ a:hover {
   width: 100%;
   background: #fff;
   z-index: 1000;
+  padding: 0.5rem 0;
 }
 
 .header-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0.5rem 1rem;
-  padding-right: .4rem;
-  right: 0;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
-.header-left {
+.header-brand {
   font-size: 1.5rem;
   font-weight: 700;
 }
 
-.latlong {
-  font-size: 0.8rem;
-  padding-left: 1rem;
-}
-
+/* Hamburger Menu Styles */
 .hamburger {
-  background: none;
-  border: none;
-  font-size: 2rem;
+  display: inline-block;
   cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+  padding: 1rem;
   z-index: 1001;
 }
 
-.site-nav {
-  position: absolute;
-  top: 100%;
-  right: 1rem;
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  border: 0.5px solid var(--color-primary);
-  width: max-content;
-  max-width: 100%;
-  margin-top: 0.5rem;
-  box-sizing: border-box;
-  z-index: 1000;
+.hamburger-box {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
 }
 
-.site-nav.open {
-  display: flex;
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 24px;
+  height: 2px;
+  background-color: #131313;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -8px;
+}
+
+.hamburger-inner::after {
+  bottom: -8px;
+}
+
+/* Active state */
+.hamburger[aria-expanded="true"] .hamburger-inner {
+  transform: rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-inner::before {
+  transform: rotate(-90deg) translate(-8px, 0);
+}
+
+.hamburger[aria-expanded="true"] .hamburger-inner::after {
+  opacity: 0;
+}
+
+/* Navigation Menu */
+
+
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: #fff;
+  padding: 5rem 2rem 2rem;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  border-left: 1px solid #eee;
+}
+
+.site-nav[aria-hidden="false"] {
+  transform: translateX(0);
 }
 
 .site-nav a {
-  padding: 0.5rem 1rem;
-  font-weight: 800;
-  font-size: 1rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  display: block;
+  padding: 0.75rem 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  font-weight: 400;
+  transition: ease-in-out .3s;
+  text-align: left;
+  padding-right: 1rem;
 }
 
 .site-nav a:hover {
-  background: var(--color-primary);
   color: #fff;
+  background-color: #131313;
+  padding-left: 1rem;
+  transition: ease-in-out .3s;
 }
 
+
+.nav-separator {
+  width: 100%;
+  border-bottom: solid 1px #131313;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Overlay when menu is open */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 /* ======================================
    SPLIT SECTIONS
 ====================================== */
@@ -461,6 +555,8 @@ a:hover {
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
+
+
 
 /* ======================================
    STORY CARDS
@@ -808,6 +904,11 @@ a:hover {
   h1 { font-size: 3.5rem; }
   h2 { font-size: 2.8rem; }
   h3 { font-size: 1.5rem; letter-spacing: -1px; }
+
+  .latlong {
+  font-size: 0.5rem;
+}
+
   
   .subtitle {
     font-size: 1.5rem;
@@ -846,6 +947,9 @@ a:hover {
   .split-left {
     padding-right: 0;
   }
+
+  
+  
 
   .vertical-line {
     position: absolute;
